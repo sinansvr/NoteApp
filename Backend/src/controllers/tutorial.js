@@ -34,7 +34,11 @@ module.exports = {
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { "name": "Tutorial name" }
+                schema: 
+                { 
+                  "name": "Tutorial name", 
+                  "description":"Tutorial description"
+                }
             }
     */
     const data = await Tutorial.create(req.body);
@@ -48,8 +52,8 @@ module.exports = {
   read: async (req, res) => {
 
     /*
-            #swagger.tags = ["Tutorials"]
-            #swagger.summary = "Get Single Tutorial"
+       #swagger.tags = ["Tutorials"]
+       #swagger.summary = "Get Single Tutorial"
     */
     const data = await Tutorial.findOne({ _id: req.params.id });
 
@@ -67,7 +71,11 @@ module.exports = {
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { "name": " new Tutorial name"  }
+                schema: 
+                { 
+                  "name": "Tutorial name", 
+                  "description":"Tutorial description"
+                }
             }
     */
     const data = await Tutorial.updateOne({ _id: req.params.id });
@@ -82,8 +90,8 @@ module.exports = {
   delete: async (req, res) => {
 
     /*
-            #swagger.tags = ["Tutorials"]
-            #swagger.summary = "Delete Tutorial"
+         #swagger.tags = ["Tutorials"]
+         #swagger.summary = "Delete Tutorial"
     */
     const data = await Tutorial.deleteOne({ _id: req.params.id });
 

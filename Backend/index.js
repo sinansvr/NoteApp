@@ -35,6 +35,13 @@ app.all("/",(req,res)=>{
 //Router
 app.use(require("./src/routes"))
 
+// Swagger
+const swaggerUI=require("swagger-ui-express");
+const swaggerJson=require("./src/configs/swagger.json")
+
+app.use("/docs/swagger", swaggerUI.serve, swaggerUI.setup(swaggerJson))
+
+
 //errorHandler
 app.use(require("./src/middlewares/errorHandler"))
 
