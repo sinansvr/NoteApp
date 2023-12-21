@@ -2,7 +2,7 @@
 
 const {mongoose} = require("../configs/dbConnection")
 
-const CategorySchema = new mongoose.Schema({
+const TutorialSchema = new mongoose.Schema({
     
     title: {
         type: String,
@@ -17,4 +17,4 @@ const CategorySchema = new mongoose.Schema({
     }
 },{collection:"tutorials", timestamps:true})
 
-module.exports= mongoose.model("Tutorial",CategorySchema)
+module.exports= mongoose.model("Tutorial",TutorialSchema)
