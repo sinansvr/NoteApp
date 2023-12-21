@@ -3,35 +3,35 @@ import { AiFillDelete } from "react-icons/ai"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-const TutorialList = () => {
+const NoteList = ({notes, setNotes,getNotes}) => {
 
-  const [notes, setNotes] = useState([])
+  // const [notes, setNotes] = useState([])
 
-  const getNotes= async()=>{
-    try {
-      const response = await axios("https://svr-noteapp-server.vercel.app/tutorials/")
-      
-      setNotes(response.data.data)
-      console.log(notes)
-    } catch (error) {
-      console.log(error)
-    }   
+  // const getNotes = async () => {
+  //   try {
+  //     const response = await axios("https://svr-noteapp-server.vercel.app/tutorials/")
+  //     setNotes(response.data.data)
+  //     console.log(notes)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
+
+  const handleDelete = async (_id) => {
+    await axios.delete(`https://svr-noteapp-server.vercel.app/tutorials/${_id}`)
+    getNotes()
   }
 
-  const tutorials = []
+  useEffect(() => {
+    getNotes()
+  }, [])
 
- useEffect(() => {
-   
-  getNotes()
-   
- }, [])
- 
   return (
     <div className="container mt-4">
       <table className="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#id</th>
+            <th scope="col">No</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col" className="text-center">
@@ -40,11 +40,11 @@ const TutorialList = () => {
           </tr>
         </thead>
         <tbody>
-          {notes?.map((item) => {
+          {notes?.map((item, index) => {
             const { _id, title, description } = item
             return (
               <tr key={_id}>
-                <th>{_id}</th>
+                <th>{index + 1}</th>
                 <td>{title}</td>
                 <td>{description}</td>
                 <td className="text-center text-nowrap">
@@ -57,6 +57,7 @@ const TutorialList = () => {
                     size={22}
                     type="button"
                     className="text-danger "
+                    onClick={() => handleDelete(_id)}
                   />
                 </td>
               </tr>
@@ -68,4 +69,4 @@ const TutorialList = () => {
   )
 }
 
-export default TutorialList
+export default NoteList

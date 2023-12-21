@@ -1,21 +1,23 @@
 import { useState } from "react"
 import axios from "axios"
 
-const AddTutorial = () => {
+const AddNote = ({ getNotes }) => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
+
+  const createNewNote = async () => {
+    const newNote = { title, description }
+    await axios.post("https://svr-noteapp-server.vercel.app/tutorials/", newNote)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     createNewNote()
-    
+    getNotes()
   }
 
-  const createNewNote=async ()=>{
-    const newNote = {title,description}
-    await axios.post("https://svr-noteapp-server.vercel.app/tutorials/",newNote)
-  }
-  
+
+
   return (
     <div className="container text-center mt-4">
       <h1 className="display-6 text-success">Add Your Note</h1>
@@ -47,7 +49,7 @@ const AddTutorial = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-         
+
         </div>
         <button type="submit" className="btn btn-danger mb-4">
           Submit
@@ -57,4 +59,4 @@ const AddTutorial = () => {
   )
 }
 
-export default AddTutorial
+export default AddNote
