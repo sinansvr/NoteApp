@@ -27,7 +27,8 @@ app.all("/",(req,res)=>{
 
     res.send({
         error:false,
-        message:"Welcome to NoteApp API!"
+        message:"Welcome to NoteApp API!",
+        documents:"/docs/swagger"
     })
 
 })
