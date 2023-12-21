@@ -19,6 +19,9 @@ dbConnection()
 //JSON data
 app.use(express.json())
 
+// CORS
+app.use(require('cors')())
+
 //Find/Pagination
 app.use(require('./src/middlewares/findSearchSortPage'))
 
