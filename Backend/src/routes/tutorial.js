@@ -2,7 +2,7 @@
 
 const router = require('express').Router()
 
-const category = require('../controllers/tutorial')
+const tutorial = require('../controllers/tutorial')
 
 // URL: /tutorials
 
