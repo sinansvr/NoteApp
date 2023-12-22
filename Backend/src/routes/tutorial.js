@@ -2,19 +2,19 @@
 
 const router = require('express').Router()
 
-const tutorial = require('../controllers/tutorial')
+const note = require('../controllers/note')
 
-// URL: /tutorials
+// URL: /notes
 
 router.route('/')
-    .get(tutorial.list)
-    .post(tutorial.create)
+    .get(note.list)
+    .post(note.create)
 
 router.route('/:id')
-    .get( tutorial.read)
-    .put( tutorial.update)
-    .patch( tutorial.update)
-    .delete( tutorial.delete)
+    .get( note.read)
+    .put( note.update)
+    .patch( note.update)
+    .delete( note.delete)
 
 
 module.exports = router

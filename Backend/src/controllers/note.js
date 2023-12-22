@@ -1,13 +1,13 @@
 "use strict";
 
-const Tutorial = require("../models/tutorial");
+const Note = require("../models/note");
 
 module.exports = {
   list: async (req, res) => {
 
     /*
-            #swagger.tags = ["Tutorials"]
-            #swagger.summary = "List Tutorials"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "List Notes"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -17,11 +17,11 @@ module.exports = {
                 </ul>
             `
     */
-    const data = await res.getModelList(Tutorial);
+    const data = await res.getModelList(Note);
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Tutorial),
+      details: await res.getModelListDetails(Note),
       data,
     });
   },
@@ -29,19 +29,19 @@ module.exports = {
   create: async (req, res) => {
 
     /*
-            #swagger.tags = ["Tutorials"]
-            #swagger.summary = "Create Tutorial"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Create Note"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
                 schema: 
                 { 
-                  "name": "Tutorial name", 
-                  "description":"Tutorial description"
+                  "name": "Note name", 
+                  "description":"Note description"
                 }
             }
     */
-    const data = await Tutorial.create(req.body);
+    const data = await Note.create(req.body);
 
     res.status(201).send({
       error: false,
@@ -52,10 +52,10 @@ module.exports = {
   read: async (req, res) => {
 
     /*
-       #swagger.tags = ["Tutorials"]
-       #swagger.summary = "Get Single Tutorial"
+       #swagger.tags = ["Notes"]
+       #swagger.summary = "Get Single Note"
     */
-    const data = await Tutorial.findOne({ _id: req.params.id });
+    const data = await Note.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
@@ -66,34 +66,34 @@ module.exports = {
   update: async (req, res) => {
 
     /*
-            #swagger.tags = ["Tutorials"]
-            #swagger.summary = "Update Tutorial"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Update Note"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
                 schema: 
                 { 
-                  "name": "Tutorial name", 
-                  "description":"Tutorial description"
+                  "name": "Note name", 
+                  "description":"Note description"
                 }
             }
     */
-    const data = await Tutorial.updateOne({ _id: req.params.id });
+    const data = await Note.updateOne({ _id: req.params.id });
 
     res.status(202).send({
       error: false,
       data,
-      new: await Tutorial.findOne({ _id: req.params.id }),
+      new: await Note.findOne({ _id: req.params.id }),
     });
   },
 
   delete: async (req, res) => {
 
     /*
-         #swagger.tags = ["Tutorials"]
-         #swagger.summary = "Delete Tutorial"
+         #swagger.tags = ["Notes"]
+         #swagger.summary = "Delete Note"
     */
-    const data = await Tutorial.deleteOne({ _id: req.params.id });
+    const data = await Note.deleteOne({ _id: req.params.id });
 
     res.status(data.deletedCount ? 204 : 404).send({
       error: !data.deletedCount,

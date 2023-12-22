@@ -2,8 +2,8 @@
 
 const router = require("express").Router()
 
-//tutorial
-router.use("/tutorials",require("./tutorial"))
+//note
+router.use("/notes",require("./note"))
 
 
 module.exports= router;
