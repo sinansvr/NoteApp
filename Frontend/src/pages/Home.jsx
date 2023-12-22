@@ -12,8 +12,7 @@ const Home = () => {
     try {
       const response = await axios(`${BASE_URL}`)
       setNotes(response.data.data)
-      console.log(response.data.data)
-      console.log(notes)
+     
     } catch (error) {
       console.log(error)
     }

@@ -1,8 +1,12 @@
 import { FaEdit } from "react-icons/fa"
 import { AiFillDelete } from "react-icons/ai"
 import axios from "axios"
+import Modal from "./Modal"
+import { useState } from "react"
 
 const NoteList = ({ notes, setNotes, getNotes }) => {
+
+  const [editItem, setEditItem] = useState({})
 
   const handleDelete = async (_id) => {
     const BASE_URL = "https://svr-noteapp-server.vercel.app/notes/"
@@ -40,6 +44,9 @@ const NoteList = ({ notes, setNotes, getNotes }) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning"
+                    data-bs-toggle="modal"
+                    data-bs-target="#openModal"
+                    onClick={()=>setEditItem(item)}
                   />
                   <AiFillDelete
                     size={22}
@@ -53,6 +60,7 @@ const NoteList = ({ notes, setNotes, getNotes }) => {
           })}
         </tbody>
       </table>
+      <Modal editItem={editItem} getNotes={getNotes}/>
     </div>
   )
 }

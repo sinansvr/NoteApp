@@ -78,7 +78,7 @@ module.exports = {
                 }
             }
     */
-    const data = await Note.updateOne({ _id: req.params.id });
+    const data = await Note.updateOne({ _id: req.params.id },req.body);
 
     res.status(202).send({
       error: false,
