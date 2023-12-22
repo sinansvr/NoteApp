@@ -2,7 +2,7 @@
 
 const {mongoose} = require("../configs/dbConnection")
 
-const NotesSchema = new mongoose.Schema({
+const NoteSchema = new mongoose.Schema({
     
     title: {
         type: String,
@@ -17,4 +17,4 @@ const NotesSchema = new mongoose.Schema({
     }
 },{collection:"notes", timestamps:true})
 
-module.exports= mongoose.model("Note",TutorialSchema)
+module.exports= mongoose.model("Note",NoteSchema)

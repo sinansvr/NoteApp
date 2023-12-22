@@ -31,7 +31,7 @@ const document = {
 	definition: {
 		// Models:
 		// "User": require('./src/models/user').schema.obj,
-		"Tutoial": require('./src/models/tutorial').schema.obj,	
+		"Note": require('./src/models/note').schema.obj,	
 		
 	}
 

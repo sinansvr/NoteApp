@@ -26,12 +26,12 @@
     "application/json"
   ],
   "paths": {
-    "/tutorials/": {
+    "/notes/": {
       "get": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "List Tutorials",
+        "summary": "List Notes",
         "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
@@ -41,9 +41,9 @@
       },
       "post": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "Create Tutorial",
+        "summary": "Create Note",
         "description": "",
         "parameters": [
           {
@@ -55,11 +55,11 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Tutorial name"
+                  "example": "Note name"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Tutorial description"
+                  "example": "Note description"
                 }
               }
             }
@@ -72,12 +72,12 @@
         }
       }
     },
-    "/tutorials/{id}": {
+    "/notes/{id}": {
       "get": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "Get Single Tutorial",
+        "summary": "Get Single Note",
         "description": "",
         "parameters": [
           {
@@ -95,9 +95,9 @@
       },
       "put": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "Update Tutorial",
+        "summary": "Update Note",
         "description": "",
         "parameters": [
           {
@@ -115,11 +115,11 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Tutorial name"
+                  "example": "Note name"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Tutorial description"
+                  "example": "Note description"
                 }
               }
             }
@@ -133,9 +133,9 @@
       },
       "delete": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "Delete Tutorial",
+        "summary": "Delete Note",
         "description": "",
         "parameters": [
           {
@@ -156,9 +156,9 @@
       },
       "patch": {
         "tags": [
-          "Tutorials"
+          "Notes"
         ],
-        "summary": "Update Tutorial",
+        "summary": "Update Note",
         "description": "",
         "parameters": [
           {
@@ -176,11 +176,11 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Tutorial name"
+                  "example": "Note name"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Tutorial description"
+                  "example": "Note description"
                 }
               }
             }
@@ -195,7 +195,7 @@
     }
   },
   "definitions": {
-    "Tutoial": {
+    "Note": {
       "type": "object",
       "properties": {
         "title": {
