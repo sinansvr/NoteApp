@@ -5,16 +5,26 @@ const AddNote = ({ getNotes }) => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
 
-  const createNewNote = async () => {
-    const newNote = { title, description }
-    await axios.post("https://svr-noteapp-server.vercel.app/tutorials/", newNote)
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createNewNote()
-    getNotes()
+    const newNote = { title, description }
+    createNewNote(newNote)    
+    setTitle("")
+    setDescription("")
   }
+
+  const createNewNote = async (newNote) => {
+    const BASE_URL="https://svr-noteapp-server.vercel.app/notes/"
+    try {
+      await axios.post(BASE_URL, newNote)
+    } catch (error) {
+      console.log(error)
+    }
+    getNotes()  
+  }
+
+ 
 
 
 

@@ -1,30 +1,18 @@
 import { FaEdit } from "react-icons/fa"
 import { AiFillDelete } from "react-icons/ai"
-import { useEffect, useState } from "react"
 import axios from "axios"
 
-const NoteList = ({notes, setNotes,getNotes}) => {
-
-  // const [notes, setNotes] = useState([])
-
-  // const getNotes = async () => {
-  //   try {
-  //     const response = await axios("https://svr-noteapp-server.vercel.app/tutorials/")
-  //     setNotes(response.data.data)
-  //     console.log(notes)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+const NoteList = ({ notes, setNotes, getNotes }) => {
 
   const handleDelete = async (_id) => {
-    await axios.delete(`https://svr-noteapp-server.vercel.app/tutorials/${_id}`)
+    const BASE_URL = "https://svr-noteapp-server.vercel.app/notes/"
+    try {      
+    await axios.delete(`${BASE_URL}${_id}`)
+    } catch (error) {
+      console.log(error)
+    }
     getNotes()
   }
-
-  useEffect(() => {
-    getNotes()
-  }, [])
 
   return (
     <div className="container mt-4">
